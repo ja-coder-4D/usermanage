@@ -2,6 +2,9 @@ package com.test.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
+
 import com.test.exception.UserNotFound;
 import com.test.model.User;
 
@@ -24,4 +27,12 @@ public interface UserService {
 	public List<User> findUserNotLikeUserName(String userName);
 	//模糊查询notlike增加判断phone不为空的
 	public List<User> findUserByUserNameNotLikeAndPhoneNotNull(String userName);
+	//StartingWith
+	public List<User> findUserByUserNameStartingWith(String userName);
+	//EndingWith
+    public List<User> findUserByUserNameEndingWith(String userName);
+    //Containing
+    public List<User> findUserByUserNameContaining(String userName);
+    //分页
+    public Page<User> findUserLikeUserNameWithPage(String userName,Integer page,Integer pageSizde);
 }

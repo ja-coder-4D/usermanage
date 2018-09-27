@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -36,7 +37,17 @@ public class JpaTest {
 		  stringBuilder.append("code = " + user.getCode() + "\t");
 		  stringBuilder.append("phone = " + user.getPhone() + "\t");
 		  System.out.println(stringBuilder.toString());
-	  }
+	}
+    //打印分页信息
+    public static <T> void printPageInfo(Page<T> pageInfo) {
+    	 StringBuilder stringBuilder = new StringBuilder();
+    	 stringBuilder.append("当前是第几页= " + pageInfo.getNumber()).append("\n");
+    	 stringBuilder.append("当前页查得的记录数= " + pageInfo.getNumberOfElements()).append("\n");
+    	 stringBuilder.append("每页需要查询的条数= " + pageInfo.getSize()).append("\n");
+    	 stringBuilder.append("总共符合条件的记录数= " + pageInfo.getTotalElements()).append("\n");
+    	 stringBuilder.append("总共的页数是= " + pageInfo.getTotalPages()).append("\n");
+    	 System.out.println(stringBuilder.toString());
+    }
     //测试查询
     public static void testList(UserService userService){
 		  List<User> users =  userService.getUsers();
@@ -98,8 +109,38 @@ public class JpaTest {
 	}
 	//测试模糊查询notlike增加判断phone不为空的
 	@Test
-	public void testfindUserByUserNameNotLikeAndPhoneNotNull(){
+	public void testFindUserByUserNameNotLikeAndPhoneNotNull(){
 		List<User> users = userService.findUserByUserNameNotLikeAndPhoneNotNull("小米");
+		printListUser(users);
+	}
+	
+	//测试StartingWith
+	@Test
+	public void testFindUserByUserNameStartingWith() {
+		List<User> users = userService.findUserByUserNameStartingWith("小");
+		printListUser(users);
+	}
+	
+	//测试EndingWith
+	@Test
+	public void testFindUserByUserNameEndingWith() {
+		List<User> users = userService.findUserByUserNameEndingWith("4");
+		printListUser(users);
+	}
+	
+	//测试Containing
+	@Test
+	public void testFindUserByUserNameContaining() {
+		List<User> users = userService.findUserByUserNameContaining("米");
+		printListUser(users);
+	}
+	
+	//测试分页
+	@Test
+	public void testFindUserByUserNameWithPage() {
+		Page<User> userPage = userService.findUserLikeUserNameWithPage("小米", 1, 3);
+		printPageInfo(userPage);
+		List<User> users = userPage.getContent();
 		printListUser(users);
 	}
 }
