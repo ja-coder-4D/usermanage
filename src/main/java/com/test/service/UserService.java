@@ -3,8 +3,6 @@ package com.test.service;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Sort;
-
 import com.test.exception.UserNotFound;
 import com.test.model.User;
 
@@ -35,4 +33,12 @@ public interface UserService {
     public List<User> findUserByUserNameContaining(String userName);
     //分页
     public Page<User> findUserLikeUserNameWithPage(String userName,Integer page,Integer pageSizde);
+    
+    public List<User> findUserByUserNameAndAge(String userName,int age);
+    
+    public List<User> findUserByAge(int age);
+    
+   /* public List<User> findUserWithGroupBy();*/
+		
+	
 }

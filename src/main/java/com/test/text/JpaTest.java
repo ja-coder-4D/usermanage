@@ -143,4 +143,22 @@ public class JpaTest {
 		List<User> users = userPage.getContent();
 		printListUser(users);
 	}
+	
+	@Test
+	public void testFindUserByUserNameAndAge(){
+		List<User> users = userService.findUserByUserNameAndAge("熊猫", 61);
+		printListUser(users);
+	}
+	
+	@Test
+	public void testFindUserByAge(){
+		List<User> users = userService.findUserByAge(16);
+		printListUser(users);
+	}
+	
+	/*@Test
+	public void testFindUserWithGroupBy(){
+		List<User> users = userService.findUserWithGroupBy();
+		System.out.println(users);
+	}*/
 }

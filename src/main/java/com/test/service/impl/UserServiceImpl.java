@@ -15,6 +15,10 @@ import com.test.dao.UserDao;
 import com.test.exception.UserNotFound;
 import com.test.model.User;
 import com.test.service.UserService;
+/**
+ * @author win
+ *
+ */
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -110,7 +114,21 @@ public class UserServiceImpl implements UserService {
 			Integer page, Integer pageSizde) {
 		return userDao.findByUserNameLike("%"+userName + "%", new PageRequest(page, pageSizde,new Sort(Direction.DESC, "age")));
 	}
+
+	@Override
+	public List<User> findUserByUserNameAndAge(String userName, int age) {
+		return userDao.findUserByUserNameLikeAndAge(userName, age);
+	}
+
+	@Override
+	public List<User> findUserByAge(int age) {
+		return userDao.findUserByAge(age);
+	}
+
+	/*@Override
+	public List<User> findUserWithGroupBy() {
+		return userDao.findUserWithGroupBy();
+	}*/
 	
-	
-    
+  
 }
