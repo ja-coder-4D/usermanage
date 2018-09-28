@@ -129,6 +129,11 @@ public class UserServiceImpl implements UserService {
 	public List<Object[]> findUserWithGroupBy() {
 		return userDao.findUserWithGroupBy();
 	}
+
+	@Override
+	public User findUserById(int id) {	
+		return userDao.findUserById(id);
+	}
 	
   
 }

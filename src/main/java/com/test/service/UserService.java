@@ -40,6 +40,8 @@ public interface UserService {
     public List<User> findUserByAge(int age);
     
     public List<Object[]> findUserWithGroupBy();
+    
+    public User findUserById(int id);
 		
 	
 }

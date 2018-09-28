@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.test.dao.UserDao;
 import com.test.exception.UserNotFound;
 import com.test.model.User;
 import com.test.service.UserService;
@@ -20,6 +21,9 @@ import com.test.service.UserService;
 public class JpaTest {
     @Autowired
 	private UserService userService;
+    
+    @Autowired
+    private UserDao userDao;
     //打印集合到控制台
     public static void printListUser(List<User> users) {
     	if (users != null) {
@@ -163,5 +167,10 @@ public class JpaTest {
 			System.out.print(objects[0] + "\t");
 			System.out.println(objects[1]);
 		}
+	}
+	@Test
+	public void testFindOne(){
+		User u = userService.findUserById(12);
+		System.out.println(u.getPhone());
 	}
 }
