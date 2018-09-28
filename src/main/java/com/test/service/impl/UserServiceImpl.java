@@ -125,10 +125,10 @@ public class UserServiceImpl implements UserService {
 		return userDao.findUserByAge(age);
 	}
 
-	/*@Override
-	public List<User> findUserWithGroupBy() {
+	@Override
+	public List<Object[]> findUserWithGroupBy() {
 		return userDao.findUserWithGroupBy();
-	}*/
+	}
 	
   
 }

@@ -156,9 +156,12 @@ public class JpaTest {
 		printListUser(users);
 	}
 	
-	/*@Test
+	@Test
 	public void testFindUserWithGroupBy(){
-		List<User> users = userService.findUserWithGroupBy();
-		System.out.println(users);
-	}*/
+		List<Object[]> users = userService.findUserWithGroupBy();
+		for (Object[] objects : users) {
+			System.out.print(objects[0] + "\t");
+			System.out.println(objects[1]);
+		}
+	}
 }

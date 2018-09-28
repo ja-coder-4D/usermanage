@@ -38,6 +38,6 @@ public interface UserDao  extends JpaRepository<User, Integer>{
     @Query(value = "select u from User u where u.age = ?1")
     public List<User> findUserByAge(int age);
     
-/*    @Query(value = "select u.age,count(*) from User u group by u.age")
-    public List<User> findUserWithGroupBy();*/
+    @Query(value = "select u.age,count(*) from user u group by u.age",nativeQuery = true)
+    public List<Object[]> findUserWithGroupBy();
 }

@@ -3,6 +3,7 @@ package com.test.service;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
+
 import com.test.exception.UserNotFound;
 import com.test.model.User;
 
@@ -38,7 +39,7 @@ public interface UserService {
     
     public List<User> findUserByAge(int age);
     
-   /* public List<User> findUserWithGroupBy();*/
+    public List<Object[]> findUserWithGroupBy();
 		
 	
 }
