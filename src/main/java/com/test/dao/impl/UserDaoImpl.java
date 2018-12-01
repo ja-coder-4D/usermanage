@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -14,12 +15,12 @@ import com.test.model.User;
 
 public class UserDaoImpl implements UserDao {
 	@PersistenceContext
-
 	private EntityManager entityManager;
+	@Autowired
+	private UserDao userDao;
 	@Override
 	public List<User> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.findAll();
 	}
 
 	@Override
@@ -67,7 +68,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public User getOne(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		return userDao.getOne(id);
 	}
 
 	@Override
@@ -115,7 +116,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public User findOne(Integer arg0) {
 		// TODO Auto-generated method stub
-		return null;
+		return userDao.findOne(arg0);
 	}
 
 	@Override
@@ -126,68 +127,57 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<User> findByPhoneNotNull() {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.findByPhoneNotNull();
 	}
 
 	@Override
 	public List<User> findByUserNameLike(String userName) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.findByUserNameLike(userName);
 	}
 
 	@Override
 	public List<User> findByUserNameNotLike(String userName) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.findByUserNameNotLike(userName);
 	}
 
 	@Override
 	public List<User> findByUserNameNotLikeAndPhoneNotNull(String userName) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.findByUserNameNotLikeAndPhoneNotNull(userName);
 	}
 
 	@Override
 	public List<User> findByUserNameStartingWith(String userName) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.findByUserNameStartingWith(userName);
 	}
 
 	@Override
 	public List<User> findByUserNameEndingWith(String userName) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.findByUserNameEndingWith(userName);
 	}
 
 	@Override
 	public List<User> findByUserNameContaining(String userName) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.findByUserNameContaining(userName);
 	}
 
 	@Override
 	public Page<User> findByUserNameLike(String userName, Pageable pageable) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.findByUserNameLike(userName, pageable);
 	}
 
 	@Override
 	public List<User> findUserByUserNameLikeAndAge(String userName, int age) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.findUserByUserNameLikeAndAge(userName, age);
 	}
 
 	@Override
 	public List<User> findUserByAge(int age) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.findUserByAge(age);
 	}
 
 	@Override
 	public List<Object[]> findUserWithGroupBy() {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.findUserWithGroupBy();
 	}
 
 	@Override
