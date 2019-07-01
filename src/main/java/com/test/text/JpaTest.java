@@ -93,11 +93,11 @@ public class JpaTest {
    
 	@Test
 	public void test() throws UserNotFound {
-		//testList(userService);
+		testList(userService);
 		//testUpdate(userService);
 		//testAdd(userService);
         //testDelete(userService);
-		testFindUsersByPhoneIsNotNull(userService);
+		//testFindUsersByPhoneIsNotNull(userService);
 	}
 	 //测试模糊查询like
 	@Test
@@ -168,6 +168,8 @@ public class JpaTest {
 			System.out.println(objects[1]);
 		}
 	}
+	
+	
 	@Test
 	public void testFindOne(){
 		User u = userService.findUserById(12);
